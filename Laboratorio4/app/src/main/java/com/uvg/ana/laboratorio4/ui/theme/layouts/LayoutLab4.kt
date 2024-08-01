@@ -1,6 +1,14 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -8,37 +16,88 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.uvg.ana.laboratorio4.R
 
+val DarkGreen = Color(0xFF058305)
+
 @Composable
-fun BackgroundImageLayout() {
-    Box(modifier = Modifier.fillMaxSize()) {
+fun UVGLayout() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .border(10.dp, DarkGreen) // Usa DarkGreen en lugar de Color.DarkGreen
+            .background(Color.White)
+            .padding(10.dp)
+    ) {
         Image(
             painter = painterResource(id = R.drawable.logouvg),
             contentDescription = null,
             contentScale = ContentScale.Crop,
+            alpha = 0.1f,
             modifier = Modifier.fillMaxSize()
         )
-        // Overlay content to check if the background is showing
-        Text(
-            text = "Hello, World!",
-            color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 24.sp,
-            modifier = Modifier.align(Alignment.Center)
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Text(
+                text = "Universidad del Valle\n de Guatemala",
+                fontSize = 32.sp,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Programación de plataformas\nmóviles, Sección 30",
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(32.dp))
+            Row {
+                Text(
+                    text = "INTEGRANTES\n",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Column {
+                    Text(text = "       Ana Laura Tschen")
+                    Text(text = "       Sebastian Garcia")
+                    Text(text = "       Fernando Rueda")
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Row {
+                Text(
+                    text = "CATEDRÁTICO\n",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(text = "       Juan Carlos Durini")
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+            Text(
+                text = "Ana Laura Tschen\n221645",
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun BackgroundImageLayoutPreview() {
+fun UVGLayoutPreview() {
     MaterialTheme {
         Surface {
-            BackgroundImageLayout()
+            UVGLayout()
         }
     }
 }
