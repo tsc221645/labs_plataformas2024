@@ -118,12 +118,14 @@ fun ContadorAvanzado() {
         ) {
             items(history.size) { index ->
                 val (value, isIncrement) = history[index]
+                //box para definir colores de los cuadros
                 Box(
                     modifier = Modifier
                         .background(if (isIncrement) Color.Green else Color.Red)
                         .padding(8.dp)
                         .fillMaxWidth()
                 ) {
+                    //definicion color y settings de texto
                     Text(
                         text = value.toString(),
                         color = Color.White,
